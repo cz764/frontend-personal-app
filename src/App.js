@@ -3,7 +3,7 @@ import { BrowserRouter, NavLink } from "react-router-dom";
 import { Menu } from "antd";
 import Router from "./router";
 
-import "antd/dist/antd.css";
+import "antd/dist/antd.less";
 
 function App() {
   return (
