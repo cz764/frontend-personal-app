@@ -1,0 +1,44 @@
+@import "~antd/es/style/themes/default.less";
+
+.registerContainer {
+  background-image: url("https://i.pinimg.com/564x/59/e6/e4/59e6e492f94f3a538e0b277f934ce753.jpg");
+  background-repeat: no-repeat;
+  background-position: center 110px;
+  background-size: 100%;
+  height: 100%;
+  .register {
+    padding-top: 200px;
+    width: 368px;
+    margin: 0 auto;
+  }
+}
+
+.success,
+.warning,
+.error {
+  transition: color 0.3s;
+}
+
+.success {
+  color: @success-color;
+}
+
+.warning {
+  color: @warning-color;
+}
+
+.error {
+  color: @error-color;
+}
+
+.progress-pass > .progress {
+  :global {
+    .ant-progress-bg {
+      background-color: @warning-color;
+    }
+  }
+}
+
+.login {
+  float: right;
+}
