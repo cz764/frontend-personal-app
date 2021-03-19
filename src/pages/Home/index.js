@@ -9,9 +9,11 @@ import {
 import Articles from "./components/Articles";
 import Applications from "./components/Applications";
 import Projects from "./components/Projects";
-import TagList from './components/TagList';
+import TagList from "./components/TagList";
 import styles from "./index.module.less";
 import { currentUser, fakeList } from "./data.js";
+
+const articleList = fakeList(10);
 
 const operationTabList = [
   {
@@ -43,7 +45,7 @@ const operationTabList = [
 const renderChildrenByTabKey = (tabKey) => {
   switch (tabKey) {
     case "articles":
-      return <Articles />;
+      return <Articles list={articleList} />;
     case "applications":
       return <Applications />;
     case "projects":
