@@ -50,14 +50,19 @@ const Register = () => {
 
   const checkPassword = (_, value) => {
     const promise = Promise;
+    // no password value
     if (!value) {
       setVisible(!!value);
       return promise.reject("Password is required.");
     }
+    // has password value
     if (!visible) {
       setVisible(!!value);
     }
     setPopover(!popover);
+    if (value.length < 6) {
+      return promise.reject("Password is required to be more than 6 digits.");
+    }
     if (value && form.getFieldValue("confirm")) {
       form.validateFields(["confirm"]);
     }
@@ -194,7 +199,9 @@ const Register = () => {
               <SubmitButton>Register</SubmitButton>
             </Col>
             <Col span={16}>
-              <Link className={styles.login} to="/login">Already a user? Login.</Link>
+              <Link className={styles.login} to="/login">
+                Already a user? Login.
+              </Link>
             </Col>
           </Row>
         </Form>

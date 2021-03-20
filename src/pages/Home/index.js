@@ -85,7 +85,7 @@ const Home = () => {
     <div className={styles.container}>
       <Row gutter={24}>
         <Col lg={7} md={24}>
-          <Card boardered={false} style={{ marginBottom: 24 }}>
+          <Card bordered={false} style={{ marginBottom: 24 }}>
             <div className={styles.avatarHolder}>
               <img alt="" src={currentUser.avatar} />
               <div className={styles.name}>{currentUser.name}</div>
@@ -113,7 +113,7 @@ const Home = () => {
         </Col>
         <Col lg={17} md={24}>
           <Card
-            bbordered={false}
+            bordered={false}
             tabList={operationTabList}
             activeTabKey={tabKey}
             onTabChange={onTabChange}
