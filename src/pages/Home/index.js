@@ -15,6 +15,7 @@ import { currentUser, fakeList } from "./data.js";
 
 const articleList = fakeList(10);
 const applicationList = fakeList(10);
+const projectList = fakeList(10);
 
 const operationTabList = [
   {
@@ -50,9 +51,9 @@ const renderChildrenByTabKey = (tabKey) => {
     case "applications":
       return <Applications list={applicationList} />;
     case "projects":
-      return <Projects />;
+      return <Projects list={projectList} />;
     default:
-      return <Articles />;
+      return <Articles list={articleList} />;
   }
 };
 
