@@ -19,5 +19,10 @@ export function register(payload = {}) {
     const {
       data: { code, message: msg },
     } = await api.register(payload);
+    if (code === 20023) {
+      message.success(msg);
+    } else {
+      message.error(msg);
+    }
   };
 }
