@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "redux-react-hook";
-import { getCaptcha } from "../../actions/register";
-import { Input, Form, Button, Row, Col, message } from "antd";
+import { Input, Form, Button, Row, Col } from "antd";
 import styles from "./index.module.less";
 
 const InputItem = (props) => {
-  const dispatch = useDispatch();
-  const { name, rules, ...rest } = props;
+  const { name, rules, onClick, ...rest } = props;
   const [timing, setTiming] = useState(false); // timing=true when clicked Captcha button
-  const [count, setCount] = useState(props.countDown || 60); // countdown seconds
-  const handleClickCaptcha = (e) => {
-    message.success("Successfully get text code 1234."); // popup to mock text set
-    dispatch(getCaptcha());
+  const [count, setCount] = useState(props.countDown || 10); // countdown seconds
+
+  const handleClickCaptcha = () => {
+    onClick();
     setTiming(true);
   };
 
@@ -23,7 +20,7 @@ const InputItem = (props) => {
           if (preSecond <= 1) {
             setTiming(false); // countdown finish
             clearInterval(interval);
-            return props.countDown || 60;
+            return props.countDown || 10;
           }
           return preSecond - 1;
         });

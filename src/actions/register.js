@@ -1,9 +1,15 @@
 import * as api from "../api/register";
+import { message } from "antd";
 
 export function getCaptcha(payload = {}) {
   return async () => {
-    console.log("test");
-    const result = await api.getCaptcha(payload);
-    console.log(result);
+    const {
+      data: { code, message: msg, data: { captcha } = {} },
+    } = await api.getCaptcha(payload);
+    if (code === 20018) {
+      message.succsss(`${msg}, Captcha is ${captcha}`);
+    } else {
+      message.error(msg);
+    }
   };
 }
