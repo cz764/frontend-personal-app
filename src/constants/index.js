@@ -1,1 +1,1 @@
-export const HOST = "https://localhost:8080/czhu";
+export const HOST = "https://demo.don.red/user-center/api";
