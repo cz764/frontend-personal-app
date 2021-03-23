@@ -13,3 +13,11 @@ export function getCaptcha(payload = {}) {
     }
   };
 }
+
+export function register(payload = {}) {
+  return async () => {
+    const {
+      data: { code, message: msg },
+    } = await api.register(payload);
+  };
+}

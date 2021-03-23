@@ -4,7 +4,7 @@ import { Form, Popover, Progress, Row, Col, Select } from "antd";
 import InputItem from "../../components/InputItem";
 import SubmitButton from "../../components/SubmitButton";
 import { useDispatch } from "redux-react-hook";
-import { getCaptcha } from "../../actions/register";
+import { getCaptcha, register } from "../../actions/register";
 import styles from "./index.module.less";
 
 const { Option } = Select;
@@ -27,8 +27,14 @@ const Register = () => {
   const [popover, setPopover] = useState(false);
   const [prefix, setPrefix] = useState("86");
   const [form] = Form.useForm();
+
   const handleFinish = (values) => {
     console.log(values);
+    dispatch(register(values));
+  };
+  const handleOnFinishFailed = ({ values, errorFields, outOfDate }) => {
+    // handle invalid form submission
+    console.log(errorFields, outOfDate);
   };
 
   const checkConfirm = (_, value) => {
@@ -94,19 +100,27 @@ const Register = () => {
     );
   };
 
-  const handleClickCaptcha = (event) => {
-    form.validateFields(["username", "email", "password"]).then(() => {
-      console.log(form.getFieldsValue(["username", "email", "password"]));
-      dispatch(
-        getCaptcha(form.getFieldsValue(["username", "email", "password"]))
-      );
-    });
+  const handleClickCaptcha = () => {
+    form
+      .validateFields(["username", "email", "password"])
+      .then(() => {
+        dispatch(
+          getCaptcha(form.getFieldsValue(["username", "email", "password"]))
+        );
+      })
+      .catch((ex) => {
+        console.log(ex);
+      });
   };
 
   return (
     <div className={styles.registerContainer}>
       <div className={styles.register}>
-        <Form form={form} onFinish={handleFinish}>
+        <Form
+          form={form}
+          onFinish={handleFinish}
+          onFinishFailed={handleOnFinishFailed}
+        >
           <InputItem
             name="username"
             placeholder="Username"
