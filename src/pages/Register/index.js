@@ -4,7 +4,7 @@ import { Form, Popover, Progress, Row, Col, Select } from "antd";
 import InputItem from "../../components/InputItem";
 import SubmitButton from "../../components/SubmitButton";
 import { useDispatch } from "redux-react-hook";
-import { getCaptcha, register } from "../../actions/register";
+import { getCaptcha, register } from "../../actions/account";
 import styles from "./index.module.less";
 
 const { Option } = Select;

@@ -1,11 +1,9 @@
-import * as api from "../api/register";
+import * as api from "../api/account";
 import { message } from "antd";
 
 export function getCaptcha(payload = {}) {
   return async () => {
-    const {
-      data: { code, message: msg, data: { captcha } = {} },
-    } = await api.getCaptcha(payload);
+    const { code, message: msg, captcha = {} } = await api.getCaptcha(payload);
     if (code === 20018) {
       message.succsss(`${msg}, Captcha is ${captcha}`);
     } else {
@@ -16,9 +14,7 @@ export function getCaptcha(payload = {}) {
 
 export function register(payload = {}) {
   return async () => {
-    const {
-      data: { code, message: msg },
-    } = await api.register(payload);
+    const { code, message: msg } = await api.register(payload);
     if (code === 20023) {
       message.success(msg);
     } else {
