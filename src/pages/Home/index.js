@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useMappedState } from "redux-react-hook";
 import { Row, Col, Card, Divider, Avatar } from "antd";
 import {
   ContactsOutlined,
@@ -12,10 +13,13 @@ import Projects from "./components/Projects";
 import TagList from "./components/TagList";
 import styles from "./index.module.less";
 import { currentUser, fakeList } from "./data.js";
+import { getUserProfile } from "../../actions/profile";
 
 const articleList = fakeList(10);
 const applicationList = fakeList(10);
 const projectList = fakeList(10);
+
+const mapState = (state) => state.profile;
 
 const operationTabList = [
   {
@@ -78,10 +82,17 @@ const renderUserInfo = (currentUser) => {
 };
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const { user = {} } = useMappedState(mapState);
   const [tabKey, setTabKey] = useState("articles");
   const onTabChange = (key) => {
     setTabKey(key);
   };
+
+  useEffect(() => {
+    dispatch(getUserProfile());
+  }, [dispatch]);
+
   return (
     <div className={styles.container}>
       <Row gutter={24}>

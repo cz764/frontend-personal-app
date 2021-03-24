@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "redux-react-hook";
 import { Tabs, Form, Checkbox, Row } from "antd";
 import {
   UserOutlined,
@@ -13,14 +14,16 @@ import {
 import styles from "./index.module.less";
 import InputItem from "../../components/InputItem";
 import SubmitButton from "../../components/SubmitButton";
+import { login } from "../../actions/account";
 
 const { TabPane } = Tabs;
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [form] = Form.useForm();
   const [autoLogin, setAutoLogin] = useState(true);
   const handleFinish = (values) => {
-    console.log(values);
+    dispatch(login(values));
   };
   return (
     <div className={styles.loginContainer}>

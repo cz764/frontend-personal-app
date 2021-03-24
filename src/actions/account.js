@@ -22,3 +22,19 @@ export function register(payload = {}) {
     }
   };
 }
+
+export function login(payload = {}) {
+  return async () => {
+    const { code, message: msg, data: { token } = {} } = await api.login(
+      payload
+    );
+    if (code === 0) {
+      message.success(msg);
+      console.log(token);
+      window.localStorage.setItem("personal-app-token", token);
+      window.location.href = "/";
+    } else {
+      message.error(msg);
+    }
+  };
+}
