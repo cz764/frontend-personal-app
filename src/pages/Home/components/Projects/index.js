@@ -1,6 +1,6 @@
 import React from "react";
 import { List, Card } from "antd";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const Projects = ({ list }) => {
   return (
@@ -16,7 +16,7 @@ const Projects = ({ list }) => {
               description={item.subDescription}
             />
             <div>
-              <span>{moment(item.updateAt).fromNow()}</span>
+              <span>{dayjs(item.updateAt).fromNow()}</span>
             </div>
           </Card>
         </List.Item>
