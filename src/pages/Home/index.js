@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useMappedState } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Card, Divider, Avatar } from "antd";
 import {
   ContactsOutlined,
@@ -83,7 +83,7 @@ const renderUserInfo = (currentUser) => {
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { user = {} } = useMappedState(mapState);
+  const { user = {} } = useSelector(mapState);
   const [tabKey, setTabKey] = useState("articles");
   const onTabChange = (key) => {
     setTabKey(key);
