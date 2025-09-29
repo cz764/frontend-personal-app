@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useMappedState } from "redux-react-hook";
+import { useDispatch, useMappedState } from "react-redux";
 import { Row, Col, Card, Divider, Avatar } from "antd";
 import {
   ContactsOutlined,

@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import React, { lazy, Suspense } from "react";
 import { Spin } from "antd";
 import styles from "./index.module.less";
@@ -15,11 +15,11 @@ const Router = () => (
       </div>
     }
   >
-    <Switch>
-      <Route exact path="/" component={Home}></Route>
-      <Route exact path="/login" component={Login}></Route>
-      <Route exact path="/register" component={Register}></Route>
-    </Switch>
+    <Routes>
+      <Route exact path="/" element={<Home />}></Route>
+      <Route exact path="/login" element={<Login />}></Route>
+      <Route exact path="/register" element={<Register />}></Route>
+    </Routes>
   </Suspense>
 );
 

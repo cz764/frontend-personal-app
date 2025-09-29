@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "redux-react-hook";
+import { useDispatch } from "react-redux";
 import { Tabs, Form, Checkbox, Row } from "antd";
 import {
   UserOutlined,
