@@ -9,33 +9,39 @@ import {
 import numeral from "numeral";
 import styles from "./index.module.less";
 
-const itemMenu = (
-  <Menu>
-    <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.alipay.com"
-      >
+const items = [
+  {
+    key: '1',
+    label: (
+      <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
         1st menu item
       </a>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.alipay.com"
-      >
-        2nd menu item
+    ),
+  },
+  {
+    key: '2',
+    label: (
+      <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+        2nd menu item (disabled)
       </a>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.alipay.com"
-      >
-        3rd menu item
+    ),
+    disabled: true,
+  },
+  {
+    key: '3',
+    label: (
+      <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+        3rd menu item (disabled)
       </a>
-    </Menu.Item>
-  </Menu>
-);
+    ),
+    disabled: true,
+  },
+  {
+    key: '4',
+    danger: true,
+    label: 'a danger item',
+  },
+];
 
 const CardInfo = ({ activeUser, newUser }) => (
   <div className={styles.cardInfo}>
@@ -87,7 +93,7 @@ const Applications = ({ list }) => {
               <Tooltip key="share" title="Share">
                 <ShareAltOutlined />
               </Tooltip>,
-              <Dropdown overlay={itemMenu} key="ellipsis">
+              <Dropdown menu={{ items }} key="ellipsis">
                 <EllipsisOutlined />
               </Dropdown>,
             ]}

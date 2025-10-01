@@ -89,15 +89,16 @@ const Home = () => {
     setTabKey(key);
   };
 
-  useEffect(() => {
-    dispatch(getUserProfile());
-  }, [dispatch]);
+  // uncomment below for api call, when api url is ready
+  // useEffect(() => {
+  //   dispatch(getUserProfile());
+  // }, [dispatch]);
 
   return (
     <div className={styles.container}>
       <Row gutter={24}>
         <Col lg={7} md={24}>
-          <Card bordered={false} style={{ marginBottom: 24 }}>
+          <Card variant="outlined" style={{ marginBottom: 24 }}>
             <div className={styles.avatarHolder}>
               <img alt="" src={currentUser.avatar} />
               <div className={styles.name}>{currentUser.name}</div>
@@ -125,7 +126,7 @@ const Home = () => {
         </Col>
         <Col lg={17} md={24}>
           <Card
-            bordered={false}
+            variant="outlined"
             tabList={operationTabList}
             activeTabKey={tabKey}
             onTabChange={onTabChange}

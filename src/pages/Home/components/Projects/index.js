@@ -16,7 +16,7 @@ const Projects = ({ list }) => {
               description={item.subDescription}
             />
             <div>
-              <span>{dayjs(item.updateAt).fromNow()}</span>
+              <span>{`${dayjs(new Date()).diff(item.updatedAt, 'd')} days ago`}</span>
             </div>
           </Card>
         </List.Item>
